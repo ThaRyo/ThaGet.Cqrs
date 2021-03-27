@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ThaGet.Cqrs.Contract.Abstractions" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestClasses\TestClasses.csproj" />
+    <ProjectReference Include="..\ThaGet.Cqrs.Handlers\ThaGet.Cqrs.Handlers.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>ThaRyo</Authors>
+    <Description>Allows creation of sorts for specific requests. Used with cqrs template.</Description>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="F:\Development\NuGet-packages" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="ThaGet.Cqrs.Domain.Entities.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Sort.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Sort.Core" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Shared" Version="1.0.0" />
+  </ItemGroup>
+</Project>
