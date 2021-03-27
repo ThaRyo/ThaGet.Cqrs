@@ -19,7 +19,7 @@ namespace ThaGet.Cqrs.Domain.EntityFramework.MySql.Extensions
             ArgumentHelper.ThrowIfNullOrEmpty(dbOptions.ConnectionString, nameof(dbOptions.ConnectionString), "No connection string supplied");
 
             services.AddDbContext<TDbContext>(options =>
-                options.UseSqlServer(dbOptions.ConnectionString, x => x.MigrationsHistoryTable("_EFMigrationsHistory", dbOptions.EntitySchema))
+                options.UseMySQL(dbOptions.ConnectionString, x => x.MigrationsHistoryTable("_EFMigrationsHistory", dbOptions.EntitySchema))
                     .EnableSensitiveDataLogging(dbOptions.IsSensitiveDataLoggingEnabled));
 
             // TODO Check what this does
