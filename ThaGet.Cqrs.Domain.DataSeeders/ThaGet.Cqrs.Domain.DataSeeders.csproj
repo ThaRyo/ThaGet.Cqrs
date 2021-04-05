@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	  <Authors>ThaRyo</Authors>
+	  <Description>Base classes for data seeding. Used with cqrs template.</Description>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+	  <Version>1.0.0</Version>
+	  <RepositoryUrl>https://github.com/tharyo/ThaGet.Cqrs</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <Target Name="PublishToGitHub" AfterTargets="Pack">
+	  <Exec Command="F:\Development\Projects\DotNet\publish.bat $(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="ThaGet.Cqrs.Api.Abstractions" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

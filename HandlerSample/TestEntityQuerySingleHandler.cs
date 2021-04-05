@@ -11,7 +11,8 @@ using ThaGet.Cqrs.Sort.Abstractions;
 
 namespace HandlerSample
 {
-    public class TestEntityQuerySingleHandler : QueryEntitySingleHandler<TestEntityQueryRequest, TestEntityResponse, TestEntity, int>
+    public class TestEntityQuerySingleHandler
+        : QueryEntitySingleHandler<TestEntityQueryRequest, TestEntityResponse, TestEntity, int>
     {
         public TestEntityQuerySingleHandler(ILogger<object> logger, IMapper mapper, IRepository<TestEntity, int> repository, IFilterService<int> filterService, ISortService<int> sortService)
             : base(logger, mapper, repository, filterService, sortService)

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>ThaRyo</Authors>
     <Description>Enhances ThaGet.Cqrs.Domain.EntityFramework with SqlServer support. Used with cqrs template.</Description>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -11,9 +11,14 @@
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
+	<Target Name="PublishToGitHub" AfterTargets="Pack">
+		<Exec Command="F:\Development\Projects\DotNet\publish.bat $(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
+	</Target>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.4" />
-    <PackageReference Include="ThaGet.Cqrs.Domain.EntityFramework" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Domain.EntityFramework.Core" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Shared" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

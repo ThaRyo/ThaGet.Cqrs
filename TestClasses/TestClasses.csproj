@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ThaGet.Cqrs.Domain\ThaGet.Cqrs.Domain.csproj" />
+    <PackageReference Include="ThaGet.Cqrs.Domain.Entities" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

@@ -6,12 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="ThaGet.Cqrs.Contract.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Domain.Repositories.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Filter.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Handlers.Queries" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TestClasses\TestClasses.csproj" />
-    <ProjectReference Include="..\ThaGet.Cqrs.Handlers\ThaGet.Cqrs.Handlers.csproj" />
   </ItemGroup>
 
 </Project>

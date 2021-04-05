@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ThaGet.Cqrs.Api.Configs
+﻿namespace ThaGet.Cqrs.Api.Configs
 {
     public class DatabaseConfig
     {
-        public string ConnectionString { get; set; }
-        public string Schema { get; set; }
+        public string Server { get; set; }
+        public int Port { get; set; }
+        public string DataBase { get; set; }
+        public string User { get; set; }
+        public string Password { get; set; }
     }
 }

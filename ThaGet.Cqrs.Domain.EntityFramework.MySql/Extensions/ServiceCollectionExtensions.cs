@@ -1,29 +1,28 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using ThaGet.Cqrs.Domain.EntityFramework.Extensions;
-using ThaGet.Shared;
 
 namespace ThaGet.Cqrs.Domain.EntityFramework.MySql.Extensions
 {
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddAppDbContext<TDbContext>(this IServiceCollection services, Action<DbContextConfigOptions> configOptions)
+        public static IServiceCollection AddAppDbContext<TDbContext>(this IServiceCollection services, Action<DatabaseConfigOptions> configOptions)
             where TDbContext : DbContext
         {
-            var dbOptions = new DbContextConfigOptions();
+            var dbOptions = new DatabaseConfigOptions();
             configOptions?.Invoke(dbOptions);
 
-            ArgumentHelper.ThrowIfNullOrEmpty(dbOptions.EntitySchema, nameof(dbOptions.EntitySchema), "No schema provided");
-            ArgumentHelper.ThrowIfNullOrEmpty(dbOptions.ConnectionString, nameof(dbOptions.ConnectionString), "No connection string supplied");
+            if(!dbOptions.IsValid())
+                throw new ArgumentException("Database configuration is invalid");
 
             services.AddDbContext<TDbContext>(options =>
-                options.UseMySQL(dbOptions.ConnectionString, x => x.MigrationsHistoryTable("_EFMigrationsHistory", dbOptions.EntitySchema))
-                    .EnableSensitiveDataLogging(dbOptions.IsSensitiveDataLoggingEnabled));
-
-            // TODO Check what this does
-            // .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning)));
+                options.UseMySQL(
+                    dbOptions.BuildConnectionString()
+                    // TODO check if mysql support that
+                    //x => x.MigrationsHistoryTable("_EFMigrationsHistory", dbOptions.EntitySchema)
+                )
+            );
 
             return services;
         }

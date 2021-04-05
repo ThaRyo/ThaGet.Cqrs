@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	  <Authors>ThaRyo</Authors>
+	  <Description>Base classes to be used for command handlers. Used with cqrs template.</Description>
+	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
+	  <Version>1.0.0</Version>
+	  <RepositoryUrl>https://github.com/tharyo/ThaGet.Cqrs</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <Target Name="PublishToGitHub" AfterTargets="Pack">
+	  <Exec Command="F:\Development\Projects\DotNet\publish.bat $(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Contract.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Contract.Commands" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Domain.Entities.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Domain.Repositories.Abstractions" Version="1.0.0" />
+    <PackageReference Include="ThaGet.Cqrs.Handlers.Core" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
